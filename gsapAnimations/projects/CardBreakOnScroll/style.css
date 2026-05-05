@@ -1,3 +1,12 @@
+:root {
+  --bg: #0f0f0f;
+  --fg: #ffffff;
+
+  --card-1: #b2b2b2;
+  --card-2: #ce2017;
+  --card-3: #2f2f2f;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,34 +17,6 @@ body {
   height: 100vh;
   width: 100%;
   font-family: Arial, Helvetica, sans-serif;
-  color: white;
-}
-
-.page1,
-.page2,
-.page3 {
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.page1 h1,
-.page2 h1,
-.page3 h1 {
-  font-weight: 400;
-  font-size: 3rem;
-}
-
-.top-card {
-  width: 100%;
-  max-width: 700px;
-  border-radius: 20px;
-  overflow: hidden;
 }
 
 img {
@@ -44,113 +25,116 @@ img {
   object-fit: cover;
 }
 
-.cards-container {
-  width: 100%;
-  max-width: 700px;
-  border: 2px solid red;
-  height: 100%;
-  max-height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+h1 {
+  font-size: 4rem;
+  font-weight: 500;
+  line-height: 1;
 }
 
-.cards {
-  width: 30%;
-  height: 80%;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+p {
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+section {
+  width: 100%;
+  height: 100svh;
   position: relative;
-
-  transform-style: preserve-3d;
-  transition: transform 0.6s ease;
-}
-.cards {
-  transform-style: preserve-3d;
-}
-.cards .outer {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  position: absolute;
+  background-color: var(--bg);
+  color: var(--fg);
+  padding: 2rem;
 }
 
-.cards .outer img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+
+.intro,
+.outro {
+  text-align: center;
+  align-content: center;
 }
 
-.cards .inner {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  border-radius: 10px;
+.intro h1,
+.outro h1 {
+  width: 50%;
+  margin: 0 auto;
 }
 
-#card1 .inner {
-  background-color: rgb(177, 174, 174);
-}
-
-#card2 .inner {
-  background-color: #CE1F15;
-}
-
-#card3 .inner {
-  background-color: #1C1C1C;
-}
-
-.inner {
+.sticky {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-direction: column;
-  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid red;
 }
 
-.inner p {
-  font-size: 1.4rem;
-  width: 90%;
+.sticky-header {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.inner h5 {
-  font-size: 0.6rem;
-  color:rgba(216, 213, 213, 0.895) ;
+.sticky-header h1 {
+  position: relative;
+  text-align: center;
+  will-change: transform, opacity;
+  transform: translateY(40px);
+  opacity: 0;
 }
 
-#card1 .inner i {
-  color: #1C1C1C;
-  font-size: 1.5rem;
-}
-
-#card1 .inner p {
-  font-size: 1.5rem;
-  width: 80%;
-  color: #1C1C1C;
-}
-
-#card1 .inner h5 {
-  color: #1C1C1C;
-  font-size: 0.6rem;
-}
-
-.cards:hover{
-  transform:rotateY(180deg)
-}
-
-.outer, .inner {
-  backface-visibility: hidden;
-}
-.inner {
-  transform: rotateY(180deg);
-}
-.cards-container {
+.card-container {
+  position: relative;
+  width: 75%;
+  display: flex;
   perspective: 1000px;
+  transform: translateY(40px);
+  will-change: width;
 }
-.cards .inner {
-  transform: rotateY(180deg); /* ✅ Pre-rotated so it shows on flip */
+
+.card {
+  position: relative;
+  flex: 1;
+  /*  */
+  aspect-ratio: 5/7;
+  /*  */
+  transform-style: preserve-3d;
+  transform-origin: top;
+  /*  */
+}
+
+#card-1 {
+  border-radius: 20px 0 0 20px;
+}
+
+#card-3 {
+  border-radius: 0 20px 20px 0;
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: inherit;
+  /*  */
+  overflow: hidden;
+}
+
+.card-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transform: rotateY(180deg);
+  padding: 2rem;
+}
+
+#card-1 .card-back{
+  background-color: var(--card-1);
+}
+#card-2 .card-back{
+  background-color: var(--card-2);
+}
+#card-3 .card-back{
+  background-color: var(--card-3);
 }
