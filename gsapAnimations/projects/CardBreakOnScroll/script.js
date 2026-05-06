@@ -3,7 +3,7 @@ let tl = gsap.timeline({
     trigger:".sticky",
     start:"top 0%",
     end:"top -100%",
-    scrub:true,
+    scrub:0.6,
     marker:true,
     pin:true
   }
