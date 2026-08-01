@@ -59,8 +59,13 @@ body {
 .main .menu h2{
   font-size: 2.1rem;
   font-weight: 500;
+  width: 100%;
+  padding: 0.2rem;
+  transition: all ease 0.3s;
 }
-
+.main .menu h2:hover{
+  background-color: rgba(242, 242, 242, 0.442);
+}
 .main .menu i{
   position: absolute;
   top: 7%;
